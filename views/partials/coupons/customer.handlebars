@@ -13,7 +13,7 @@
 		{{#if ../logged_in}} <!-- if you want to access properties in a partial, you must go up -->
 			<form data-couponid="{{this.id}}">
 				<input type="number" placeholder="purchase quantity?">
-				<input type="submit" class="purchaseCoupon">
+				<input type="submit" class="purchaseCoupon" value="purchase">
 			</form>
 		{{else}}
 			<p>Login to buy this coupon :)</p>
