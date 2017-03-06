@@ -22,32 +22,8 @@ router.get('/', function(req,res) {
 		// res.send('coupons! your user id is: ' + req.session.user_id + " your email is: " + req.session.user_email);
 
 	var query = "SELECT * FROM coupons"
-	console.log('supsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsup')
 
-	console.log({
-		logged_in: req.session.logged_in,
-		user_email: req.session.user_email,
-		user_id: req.session.user_id,
-		company: req.session.company,
-		username: req.session.username
-	});
-	console.log('supsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsupsup')
-	var count = 0;
 	connection.query(query, function(err, coupons) {
-		count++;
-
-		console.log('hihihihihihihihihihihihihihihihihihihihi' + count)
-		console.log({
-			coupons: coupons,
-			logged_in: req.session.logged_in,
-			user_email: req.session.user_email,
-			user_id: req.session.user_id,
-			company: req.session.company,
-			username: req.session.username
-		});
-		console.log('hihihihihihihihihihihihihihihihihihihihi')
-
-
 		res.render('coupons/index', {
 			coupons: coupons,
 			logged_in: req.session.logged_in,
