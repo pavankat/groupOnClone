@@ -58,13 +58,17 @@ CREATE TABLE coupons
 	item varchar(255) NOT NULL,
 	coupon_code varchar(255) NOT NULL,
 	expiration_date DATE NOT NULL,
-	PRIMARY KEY (id)
+	user_id INT NOT NULL, 
+	PRIMARY KEY (id),
+	FOREIGN KEY (user_id) references users(id)
+
 );
 
 CREATE TABLE user_coupons
 (
-	user_id int NOT NULL,
+	user_id int NOT NULL, 
 	coupon_id int NOT NULL, 
+	quantity int NOT NULL, 
 	FOREIGN KEY (user_id) references users(id),
 	FOREIGN KEY (coupon_id) references coupons(id)
 );

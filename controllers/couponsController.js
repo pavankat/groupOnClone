@@ -40,9 +40,9 @@ router.get('/', function(req,res) {
 router.post('/create', function(req,res) {
 	//make sure that user inserting is a company
 	if (req.session.company){
-		var query = "INSERT INTO coupons (company_name, price, item, coupon_code, expiration_date) VALUES (?, ?, ?, ?, ?)"
+		var query = "INSERT INTO coupons (company_name, price, item, coupon_code, expiration_date, user_id) VALUES (?, ?, ?, ?, ?, ?)"
 
-		connection.query(query, [ req.body.company_name, req.body.price, req.body.item, req.body.coupon_code, req.body.expiration_date ], function(err, response) {
+		connection.query(query, [ req.body.company_name, req.body.price, req.body.item, req.body.coupon_code, req.body.expiration_date, req.session.user_id ], function(err, response) {
 
 			console.log('----error-----')
 			console.log(err);

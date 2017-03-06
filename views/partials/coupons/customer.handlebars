@@ -10,6 +10,12 @@
 {{#each coupons}}
 	
 	<li>
+		<form data-couponid="{{this.id}}">
+			<input type="number" placeholder="purchase quantity?">
+			<input type="submit" class="purchaseCoupon">
+		</form>
+
+		<br>
 		Item: {{this.item}}
 		<br>
 		Price: {{this.price}}
