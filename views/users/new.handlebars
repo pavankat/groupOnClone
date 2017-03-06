@@ -1,13 +1,18 @@
 <h1>Registration</h1>
 <form class="create-update-form" action="/users/create" method="POST">
-<div class="form-group">
-  <label for="em">Username:</label>
-  <input type="text" id="em" name="username">
-</div>
+  <div class="form-group">
+    <input type="radio" id="company" name="company" value="0">I am a Customer<br>
+    <input type="radio" id="company" name="company" value="1">I am a Company
+  </div>
 
   <div class="form-group">
-    <label for="em">Email:</label>
-    <input type="text" id="em" name="email">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
   </div>
 
   <div class="form-group">

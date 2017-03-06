@@ -12,8 +12,6 @@ var session = require('express-session');
 app.use(session({ secret: 'app', cookie: { maxAge: 6*1000*1000*1000*1000*1000*1000 }}));
 app.use(cookieParser());
 
-
-
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/public"));
 
@@ -29,9 +27,11 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
+var applicationController = require("./controllers/applicationController.js");
 var usersController = require("./controllers/usersController.js");
 var couponsController = require("./controllers/couponsController.js");
 
+app.use("/", applicationController);
 app.use("/users", usersController);
 app.use("/coupons", couponsController);
 

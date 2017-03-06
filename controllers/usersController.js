@@ -46,6 +46,8 @@ router.post('/login', function(req, res) {
               req.session.logged_in = true;
               req.session.user_id = response[0].id;
               req.session.user_email = response[0].email;
+              req.session.company = response[0].company;
+              req.session.username = response[0].username;
 
               res.redirect('/coupons');
             }else{
@@ -56,7 +58,6 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/create', function(req,res) {
-  
   var query = "SELECT * FROM users WHERE email = ?"
 
   connection.query(query, [ req.body.email ], function(err, response) {
@@ -69,14 +70,20 @@ router.post('/create', function(req,res) {
           bcrypt.hash(req.body.password, salt, function(err, hash) {            
             var query = "INSERT INTO users (username, email, password_hash, company) VALUES (?, ?, ?, ?)"
 
-            connection.query(query, [ req.body.username, req.body.email, hash, 'true' ], function(err, response) {
+            connection.query(query, [ req.body.username, req.body.email, hash, req.body.company ], function(err, response) {
 
               req.session.logged_in = true;
 
-              req.session.user_id = response.id;
-              req.session.user_email = response.email;
+              req.session.user_id = response.insertId; //only way to get id of an insert for the mysql npm package
 
-              res.redirect('/coupons')
+              var query = "SELECT * FROM users WHERE id = ?"
+              connection.query(query, [ req.session.user_id ], function(err, response) {
+                req.session.username = response[0].username;
+                req.session.user_email = response[0].email;
+                req.session.company = response[0].company;
+
+                res.redirect('/coupons')
+              });
             });
           });
       });

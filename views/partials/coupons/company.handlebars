@@ -1,0 +1,15 @@
+<p>if the user is a company (in the column company, it stores 1) then render the company partial (look in views/partials/coupons/company.handlebars)</p>
+
+<p>this file is being rendered in views/coupons/index.handlebars</p>
+
+<p>You are a company. You can insert coupons into the database.</p>
+
+<form action="/coupons/create" method="POST">
+	<input type="text" name="company_name" placeholder="what's the company name?" /><br />
+	<input type="text" name="price" placeholder="what's the price of this coupon?" /><br />
+	<input type="text" name="item" placeholder="what's the coupon's name?" /><br />
+	<input type="text" name="coupon_code" placeholder="what's the coupon code? (something to easily remember it by)" /><br />
+	<input type="date" name="expiration_date" placeholder="what's the expiration date?" /><br />
+	<input type="submit"></input>
+</form>
+

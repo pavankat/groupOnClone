@@ -6,6 +6,19 @@
 		<title>MVC With Cats!</title>
 	</head>
 	<body>
+		{{#if logged_in}}
+			{{#if company}}
+				<a href="/coupons">Make a Coupon</a>
+			{{/if}}
+			<a href="/users/sign-out">Sign Out</a>
+		{{else}}
+			<a href="/users/sign-in">Sign In</a>
+			<a href="/users/new">Register</a>
+		{{/if}}
+
+		<a href="/coupons">Coupons</a>
+
+
 		{{{ body }}}
 	</body>
 </html>
