@@ -3,22 +3,21 @@
 - comment the hell out of this
 - make videos explaining different parts of this app
 
-- talk about 
+- go over authentication 
 * authentication
 * authorization 
 * hitting a route via ajax
+* hitting a route via a form
 
-## Planning Routes
+### Completed Routes
 
+```
 get route 
 	companies can see 
 		all the coupons that the users have purchased from their company
 
 get route 
 	-> for user to see all the coupons that they have bought
-
-
-### Completed Routes
 
 get route 
 	customers can see 
@@ -28,8 +27,7 @@ get route
 
 get route 
 	form to create a coupon
-
-
+```
 
 
 
