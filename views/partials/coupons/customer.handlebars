@@ -10,10 +10,14 @@
 {{#each coupons}}
 	
 	<li>
-		<form data-couponid="{{this.id}}">
-			<input type="number" placeholder="purchase quantity?">
-			<input type="submit" class="purchaseCoupon">
-		</form>
+		{{#if ../logged_in}} <!-- if you want to access properties in a partial, you must go up -->
+			<form data-couponid="{{this.id}}">
+				<input type="number" placeholder="purchase quantity?">
+				<input type="submit" class="purchaseCoupon">
+			</form>
+		{{else}}
+			<p>Login to buy this coupon :)</p>
+		{{/if}}
 
 		<br>
 		Item: {{this.item}}
