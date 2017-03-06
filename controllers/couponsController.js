@@ -20,35 +20,44 @@ var connection = mysql.createConnection({
 router.get('/', function(req,res) {
 	//check to see if user is logged in 
 		// res.send('coupons! your user id is: ' + req.session.user_id + " your email is: " + req.session.user_email);
-	res.render('coupons/index', {
-		logged_in: req.session.logged_in,
-		user_email: req.session.user_email,
-		user_id: req.session.user_id,
-		company: req.session.company,
-		username: req.session.username
-	})
+
+	var query = "SELECT * FROM coupons"
+	
+	connection.query(query, function(err, coupons) {
+
+		res.render('coupons/index', {
+			coupons: coupons,
+			logged_in: req.session.logged_in,
+			user_email: req.session.user_email,
+			user_id: req.session.user_id,
+			company: req.session.company,
+			username: req.session.username
+		});
+
+	});
 });
 
 router.post('/create', function(req,res) {
-	var query = "INSERT INTO coupons (company_name, price, item, coupon_code, expiration_date) VALUES (?, ?, ?, ?, ?)"
+	//make sure that user inserting is a company
+	if (req.session.company){
+		var query = "INSERT INTO coupons (company_name, price, item, coupon_code, expiration_date) VALUES (?, ?, ?, ?, ?)"
 
-	console.log(query)
+		connection.query(query, [ req.body.company_name, req.body.price, req.body.item, req.body.coupon_code, req.body.expiration_date ], function(err, response) {
 
-	console.log([ req.body.company_name, req.body.price, req.body.item, req.body.coupon_code, req.body.expiration_date ]);
+			console.log('----error-----')
+			console.log(err);
+			console.log('----error-----')
 
-	connection.query(query, [ req.body.company_name, req.body.price, req.body.item, req.body.coupon_code, req.body.expiration_date ], function(err, response) {
-
-		console.log('----error-----')
-		console.log(err);
-		console.log('----error-----')
-
-		console.log('----response-----')
-		console.log(response);
-		console.log('----response-----')
+			console.log('----response-----')
+			console.log(response);
+			console.log('----response-----')
 
 
-		res.redirect('/coupons')
-	});
+			res.redirect('/coupons')
+		});
+	}else{
+		res.send('you do not have access to this because you are not a company')
+	}
 });
 
 module.exports = router;

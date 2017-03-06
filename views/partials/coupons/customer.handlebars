@@ -3,3 +3,23 @@
 <p>this file is being rendered in views/coupons/index.handlebars</p>
 
 <p>You are a customer</p>
+
+<h2>Coupons for sale</h2>
+
+<ul>
+{{#each coupons}}
+	
+	<li>
+		Item: {{this.item}}
+		<br>
+		Price: {{this.price}}
+		<br>
+		Expiration Date: {{this.expiration_date}}
+		<br>
+		Company Name: {{this.company_name}}
+		<br>
+		Coupon Code: {{this.coupon_code}}
+	</li>
+
+{{/each}}
+</ul>
