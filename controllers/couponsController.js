@@ -25,6 +25,7 @@ router.get('/', function(req,res) {
 
 	connection.query(query, function(err, coupons) {
 		res.render('coupons/index', {
+			purchase_coupon: true,
 			coupons: coupons,
 			logged_in: req.session.logged_in,
 			user_email: req.session.user_email,
@@ -34,6 +35,42 @@ router.get('/', function(req,res) {
 		});
 
 	});
+});
+
+router.get('/purchased', function(req,res) {
+	if (!req.session.company){
+		var query = "SELECT * FROM users u LEFT JOIN user_coupons uc ON uc.user_id = u.id LEFT JOIN coupons c ON c.id = uc.coupon_id WHERE u.id = ?"
+
+		connection.query(query, [req.session.user_id], function(err, coupons) {
+			res.render('coupons/purchased', {
+				purchase_coupon: false,
+				coupons: coupons,
+				logged_in: req.session.logged_in,
+				user_email: req.session.user_email,
+				user_id: req.session.user_id,
+				company: req.session.company,
+				username: req.session.username
+			});
+		});
+	}
+});
+
+router.get('/created', function(req,res) {
+	if (req.session.company){
+		var query = "SELECT * FROM users u LEFT JOIN coupons c ON c.user_id = u.id WHERE u.id = ?"
+
+		connection.query(query, [req.session.user_id], function(err, coupons) {
+			res.render('coupons/created', {
+				purchase_coupon: false,
+				coupons: coupons,
+				logged_in: req.session.logged_in,
+				user_email: req.session.user_email,
+				user_id: req.session.user_id,
+				company: req.session.company,
+				username: req.session.username
+			});
+		});
+	}
 });
 
 //buying a coupon

@@ -9,16 +9,21 @@
 		{{#if logged_in}}
 			{{#if company}}
 				<a href="/coupons">Make a Coupon</a>
+				<a href="/coupons/created">Coupons Created</a>
+			{{else}}
+				<a href="/coupons">All Coupons</a>
+				<a href="/coupons/purchased">My Purchases</a>
 			{{/if}}
-			<a href="/users/sign-out">Sign Out</a>
+
+			<a href="/users/sign-out" id="sign-out">Sign Out ({{this.username}})</a>
 		{{else}}
 			<a href="/users/sign-in">Sign In</a>
 			<a href="/users/new">Register</a>
 		{{/if}}
 
-		<a href="/coupons">Coupons</a>
+		
 
-		<p><strong>logged_in:</strong> {{logged_in}} |
+		<p class="clear"><strong>logged_in:</strong> {{logged_in}} |
 		<strong>user_email:</strong> {{user_email}} |
 		<strong>user_id:</strong> {{user_id}} |
 		<strong>company:</strong> {{company}} |

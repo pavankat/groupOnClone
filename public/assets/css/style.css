@@ -21,3 +21,11 @@ li {
 input {
 	width: 300px;
 }
+
+#sign-out {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
