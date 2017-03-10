@@ -2,21 +2,10 @@ var bcrypt = require('bcryptjs');
 var express = require('express');
 var router  = express.Router();
 var mysql = require('mysql')
-
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-
-  // Your username
-  user: "root",
-
-  // Your password
-  password: "",
-  database: "groupon_db"
-});
+var connection = require('../config/connection.js')
 
 //this is the users_controller.js file
-
+//couponsController
 router.get('/', function(req,res) {
 	//check to see if user is logged in 
 		// res.send('coupons! your user id is: ' + req.session.user_id + " your email is: " + req.session.user_email);
@@ -36,6 +25,13 @@ router.get('/', function(req,res) {
 
 	});
 });
+
+
+
+
+
+
+
 
 router.get('/purchased', function(req,res) {
 	if (!req.session.company){
