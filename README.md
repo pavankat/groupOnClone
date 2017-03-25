@@ -1,5 +1,27 @@
 # GroupOn Clone
 
+## steps to deploy
+
+1. create a MySQL database
+2. populate it with db/schema.sql
+3. update config/connection.js to your own database credentials
+4. push to github
+5. push to heroku (no index.php or composer.json)
+6. login to heroku
+7. add jawsdb to the app
+8. click on jawsdb in heroku
+9. using the credentials listed login to your mysql database like this in your terminal:
+
+Don't forget to take off the < > brackets 
+
+There is no space after u and p. This is not a typo. 
+
+```
+mysql -h <database url goes here> -u<username goes here> -p<password goes here>
+```
+
+## synoposis
+
 This is an app where there are two types of users, companies and customers. Companies can create coupons and Customers can buy coupons. 
 
 Technologies used: Express.js (routing), Handlebars (templating), jQuery (ajax, interactivity), MySQL (database)
