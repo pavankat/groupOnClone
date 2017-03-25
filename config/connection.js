@@ -6,7 +6,7 @@ console.log('--------------look here----------------');
 console.log(app.settings.env); //development
 console.log('--------------look here----------------');
 
-if (app.settings.env){
+if (app.settings.env == 'development'){
   var connection = mysql.createConnection({
     port: 3306,
     host: "localhost",

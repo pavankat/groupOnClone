@@ -20,6 +20,9 @@ There is no space after u and p. This is not a typo.
 mysql -h <database url goes here> -u<username goes here> -p<password goes here>
 ```
 
+10. ```heroku logs``` to debug things
+
+
 ## synoposis
 
 This is an app where there are two types of users, companies and customers. Companies can create coupons and Customers can buy coupons. 
