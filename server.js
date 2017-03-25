@@ -2,8 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
-var port = 3000;
-
 /*
 	did this instead of 
 		var app = express();
@@ -43,5 +41,7 @@ app.use("/", applicationController);
 app.use("/users", usersController);
 app.use("/coupons", couponsController);
 
-
+var port = process.env.PORT || 3000;
 app.listen(port);
+
+
