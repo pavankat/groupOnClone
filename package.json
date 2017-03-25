@@ -1,12 +1,12 @@
 {
-  "name": "mvc_design",
+  "name": "vc-without-models",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Pavan Katepalli",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
