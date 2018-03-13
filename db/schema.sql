@@ -73,6 +73,14 @@ CREATE TABLE user_coupons
 	FOREIGN KEY (coupon_id) references coupons(id)
 );
 
+# joining table
+CREATE TABLE user_votes
+(
+	user_id int NOT NULL, 
+	coupon_id int NOT NULL, 
+	FOREIGN KEY (user_id) references users(id),
+	FOREIGN KEY (coupon_id) references coupons(id)
+);
 
 
 

@@ -10,7 +10,7 @@ router.get('/', function(req,res) {
 	//check to see if user is logged in 
 		// res.send('coupons! your user id is: ' + req.session.user_id + " your email is: " + req.session.user_email);
 
-	var query = "SELECT * FROM coupons"
+	var query = "SELECT * FROM coupons c LEFT JOIN (SELECT coupon_id, count(*) AS vote_count FROM user_votes GROUP BY coupon_id) AS votes ON c.id = votes.coupon_id";
 
 	connection.query(query, function(err, coupons) {
 		res.render('coupons/index', {

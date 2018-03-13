@@ -50,10 +50,12 @@ app.set("view engine", "handlebars");
 var applicationController = require("./controllers/applicationController.js");
 var usersController = require("./controllers/usersController.js");
 var couponsController = require("./controllers/couponsController.js");
+var votesController = require("./controllers/votesController.js");
 
 app.use("/", applicationController);
 app.use("/users", usersController);
 app.use("/coupons", couponsController);
+app.use("/votes", votesController);
 
 var port = process.env.PORT || 3000;
 app.listen(port);
